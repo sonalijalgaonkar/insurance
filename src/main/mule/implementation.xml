@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="get-policyholder" doc:id="64fffbac-4f87-4536-aaae-6df09ec5664d" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="8a7e0961-bedf-4ac0-92ba-16a8628ec651" config-ref="Salesforce_Config" type="customer__c"/>
+		<ee:transform doc:name="Transform Message" doc:id="333a3861-3016-4f47-883a-3fe08dff829d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="dd894f07-85d0-46e2-be89-06608e95ff1e" />
+	</flow>
+	<flow name="get-policy" doc:id="3ebffe13-5205-4693-a889-ba996ff96ce3" >
+		<ee:transform doc:name="Transform Message" doc:id="1a83e8c4-f8f2-46c7-a51c-448a22b1d849" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<salesforce:retrieve doc:name="Retrieve" doc:id="885025bf-1062-4598-b2fc-93f5f25bc810" type="Policy__c" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="176c72ff-cd16-45a0-a1ce-4bc0f1410bb1" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="575feb88-5715-42b2-9253-81dd1f95beaa" />
+	</flow>
+	<flow name="get-premium" doc:id="e512a0e1-9867-451f-a942-8707fcffb1a9" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="a98d0a41-21f9-43b2-badd-a5750c526554" type="Premium__c" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="b6da986c-8eb4-474c-98f3-468bcfb719e4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="db26d5a9-3189-4cc7-81e1-06868d0a37ae" />
+	</flow>
+	<flow name="get-claim" doc:id="6f98cd8d-02d0-43a6-9fb8-2349f27c932d" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="3b74d88f-00b3-46d1-a078-6a5f5ffa2c4e" type="Claim__c" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="c04b2c2d-c7e6-4a4e-b6e4-e1fab4969b4d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="d13f423a-fbca-4d48-bc0d-f0cc27aa4f06" />
+	</flow>
+	<flow name="get-vehicle" doc:id="090af3e6-5475-4639-bfb5-12608f4f1dd6" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="37fa3949-7858-44d6-a75d-b2aee98f33a1" type="Vehicle__c" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="7601c40a-a168-4d26-8e3c-cc56fb4b0192" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="58d29a68-918c-409d-bfeb-6940123008ac" />
+	</flow>
+	<flow name="get-insurancecompany" doc:id="aece1dd2-b144-403e-ae06-6222878f094e" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="aac1640c-dd1f-4dfd-b7c0-f60b00f9bb7d" type="Insurance_company__c" config-ref="Salesforce_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="4c8d6485-48ff-4a61-b5e9-b6dfd9e438df" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="7eb9e91d-d17e-4aa6-8934-0002417ff4d5" />
+	</flow>
+	<flow name="get-receipt" doc:id="ecc1b500-1678-42bc-9e19-a319fc34ea54" >
+		<salesforce:retrieve doc:name="Retrieve" doc:id="b0cb30c7-e2d4-4ac2-9bcd-a51ddb54eee8" config-ref="Salesforce_Config" type="Receipt__c"/>
+		<ee:transform doc:name="Transform Message" doc:id="dc641237-34b9-4a7f-9781-834c5f8a7997" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="37f06ca1-a4b4-4f05-ae7e-1f8e4c6904db" />
+	</flow>
+</mule>
