@@ -6,7 +6,6 @@
 	<artifactId>insurance</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>insurance</name>
 
 	<properties>
@@ -29,6 +28,16 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>4.4.0</muleVersion>
+						<username>${username}</username>
+						<password>${password}</password>
+						<environment>Sandbox</environment>
+						<applicationName>acv-auctions-BigQuery</applicationName>
+						<workerType>MICRO</workerType>
+						<objectStoreV2>true</objectStoreV2>
+				</cloudHubDeployment>
 			</plugin>
 		</plugins>
 	</build>
@@ -45,13 +54,6 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
-		</dependency>
-		<dependency>
-			<groupId>990ba818-74e6-457e-bbde-8fee5c0cdff6</groupId>
-			<artifactId>general-insurance-company-pvt-ltd</artifactId>
-			<version>1.0.0</version>
-			<classifier>raml</classifier>
-			<type>zip</type>
 		</dependency>
 		<dependency>
 			<groupId>org.mule.modules</groupId>
